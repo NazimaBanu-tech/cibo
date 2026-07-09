@@ -2312,16 +2312,56 @@ input, textarea, select { font-family: var(--font); }
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
   .dashboard-hero { grid-template-columns: 1fr; }
 }
-@media (max-width: 640px) {
-  .navbar { padding: 12px 16px; }
-  .hero-overlay { padding: 0 24px; }
-  .hero-overlay h1 { font-size: 24px; }
-  .restaurant-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
-  .menu-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
-  .success-meta { grid-template-columns: 1fr; }
-  .track-meta { grid-template-columns: 1fr; }
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0 16px;
+    height: auto;
+    min-height: 64px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .navbar .nav-search {
+    order: 4;
+    width: 100%;
+    max-width: 100%;
+    margin: 8px 0 12px;
+  }
+  .navbar .nav-logo span {
+    font-size: 18px;
+  }
+  .navbar .nav-location {
+    font-size: 14px;
+  }
+  .navbar .nav-right {
+    gap: 12px;
+  }
+  .hero-overlay h1 {
+    font-size: 26px;
+  }
+}
+@media (max-width: 480px) {
+  .restaurant-grid { grid-template-columns: 1fr; gap: 16px; }
+  .menu-grid { grid-template-columns: 1fr; gap: 16px; }
+  .favorites-grid { grid-template-columns: 1fr; }
+  .categories-row {
+    overflow-x: auto;
+    padding-bottom: 8px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .category-item {
+    flex-shrink: 0;
+  }
+  .hero-overlay h1 {
+    font-size: 20px;
+  }
+  .hero-overlay p {
+    font-size: 13px;
+  }
+  .success-meta, .track-meta {
+    grid-template-columns: 1fr;
+  }
   .admin-sidebar { display: none; }
-  .admin-main { margin-left: 0; }
-  .favorites-grid { grid-template-columns: repeat(2, 1fr); }
+  .admin-main { margin-left: 0; padding: 16px; }
   .admin-profile-grid { grid-template-columns: 1fr; }
 }
+

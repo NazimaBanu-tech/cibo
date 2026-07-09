@@ -3,4 +3,10 @@
 // Toggle USE_SUPABASE to connect to the database
 // =============================================
 
-export const USE_SUPABASE = false; // Set to true when database credentials are filled in .env
+const hasSupabaseCreds = 
+  import.meta.env.VITE_SUPABASE_URL && 
+  import.meta.env.VITE_SUPABASE_URL !== 'https://your-supabase-project-url.supabase.co' &&
+  import.meta.env.VITE_SUPABASE_ANON_KEY;
+
+export const USE_SUPABASE = !!hasSupabaseCreds;
+

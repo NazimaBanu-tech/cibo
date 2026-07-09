@@ -8,7 +8,7 @@ echo ===================================================
 echo.
 
 :: Step 1: Change directory to project location
-cd /d "c:\Users\nazim\OneDrive\Attachments\Desktop\cibo2"
+cd /d "c:\Users\nazim\OneDrive\Documents\Projects\CIBO"
 
 :: Step 2: Check if node_modules folder exists, if not run install
 if not exist node_modules (
