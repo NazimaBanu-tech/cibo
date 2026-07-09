@@ -5,11 +5,13 @@ import { useCart } from '../context/CartContext';
 import { searchRestaurants } from '../data/restaurants';
 import LogoutModal from './LogoutModal';
 import { getImage } from '../data/assetLibrary';
+import { useWindowWidth } from '../utils/useWindowWidth';
 
 export default function Navbar() {
   const { user, signOut } = useAuth();
   const { totalItems } = useCart();
   const navigate = useNavigate();
+  const width = useWindowWidth();
 
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
@@ -19,7 +21,6 @@ export default function Navbar() {
   const searchRef = useRef(null);
   const userMenuRef = useRef(null);
 
-  // Close dropdowns on outside click
   useEffect(() => {
     const handler = (e) => {
       if (searchRef.current && !searchRef.current.contains(e.target)) {
@@ -55,6 +56,38 @@ export default function Navbar() {
     setShowLogout(false);
     navigate('/');
   };
+
+  const isMobile = width <= 768;
+
+  if (isMobile) {
+    return (
+      <>
+        <nav className="navbar mobile-navbar">
+          {/* Logo & Info */}
+          <Link to="/" className="nav-logo">
+            <img src="/logo.png" alt="Cibo" style={{ width: 32, height: 32 }} />
+            <span>Cibo</span>
+          </Link>
+          <div className="nav-location" style={{ fontSize: 13, gap: 4 }}>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+            </svg>
+            Bangalore
+          </div>
+          {/* Cart Icon Shortcut */}
+          <div className="nav-right" style={{ gap: 8 }}>
+            <Link to="/cart" className="nav-cart" style={{ padding: '6px 12px', border: 'none' }}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <circle cx="9" cy="21" r="1" /><circle cx="20" cy="21" r="1" />
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+              </svg>
+              {totalItems > 0 && <span className="nav-cart-badge" style={{ width: 16, height: 16, fontSize: 9 }}>{totalItems}</span>}
+            </Link>
+          </div>
+        </nav>
+      </>
+    );
+  }
 
   return (
     <>
@@ -158,3 +191,4 @@ export default function Navbar() {
     </>
   );
 }
+
