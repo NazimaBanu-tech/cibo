@@ -16,7 +16,12 @@ const PAYMENT_METHODS = [
   { id: 'card', label: 'Credit / Debit Card', sub: 'Visa, Mastercard, Rupay' },
 ];
 
+import { useWindowWidth } from '../utils/useWindowWidth';
+
 export default function CheckoutPage() {
+  const width = useWindowWidth();
+  const isMobile = width <= 768;
+
   const { cart, subtotal, deliveryFee, gst, total, promoDiscount, clearCart } = useCart();
   const { user } = useAuth();
   const navigate = useNavigate();
@@ -196,6 +201,7 @@ export default function CheckoutPage() {
   }
 
   return (
+
     <div className="checkout-page">
       <h1>Checkout</h1>
       <p style={{ fontSize: 14, color: 'var(--text-secondary)' }}>Review your order and choose a payment method.</p>
