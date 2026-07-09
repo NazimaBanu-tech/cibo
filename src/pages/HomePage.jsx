@@ -111,7 +111,39 @@ export default function HomePage() {
   );
 }
 
+import { useWindowWidth } from '../utils/useWindowWidth';
+
 function RestaurantCard({ restaurant }) {
+  const width = useWindowWidth();
+  const isMobile = width <= 768;
+
+  if (isMobile) {
+    return (
+      <Link 
+        to={`/restaurant/${restaurant.slug}`} 
+        className="restaurant-card mobile-restaurant-card" 
+        id={`restaurant-${restaurant.slug}`}
+        style={{ display: 'flex', gap: 12, padding: 12, borderRadius: 12, background: 'var(--white)', marginBottom: 12, boxShadow: 'var(--shadow)' }}
+      >
+        <img
+          src={getImage('restaurants', restaurant.image)}
+          alt={restaurant.name}
+          style={{ width: 100, height: 100, borderRadius: 8, objectFit: 'cover' }}
+          onError={(e) => { e.target.src = '/logo.png'; }}
+        />
+        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+          <h4 style={{ fontSize: 15, fontWeight: 700, margin: '0 0 4px 0' }}>{restaurant.name}</h4>
+          <div style={{ fontSize: 12, color: 'var(--text-secondary)', marginBottom: 4 }}>
+            ★ {restaurant.rating} · {restaurant.deliveryTime}
+          </div>
+          <div style={{ fontSize: 11, color: 'var(--text-muted)' }}>
+            {restaurant.cuisine.slice(0, 2).join(', ')}
+          </div>
+        </div>
+      </Link>
+    );
+  }
+
   return (
     <Link to={`/restaurant/${restaurant.slug}`} className="restaurant-card" id={`restaurant-${restaurant.slug}`}>
       <img
@@ -138,3 +170,4 @@ function RestaurantCard({ restaurant }) {
     </Link>
   );
 }
+
