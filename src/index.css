@@ -599,44 +599,96 @@ input, textarea, select { font-family: var(--font); }
   }
 }
 
+/* Modern Mobile Bottom Navigation & Top Header Redesign */
 @media (max-width: 768px) {
   .navbar {
-    flex-wrap: wrap;
-    height: auto;
-    padding: 12px 16px;
-    gap: 12px;
-  }
-  .navbar .nav-logo {
-    order: 1;
-  }
-  .navbar .nav-location {
-    order: 2;
-  }
-  .navbar .nav-right {
-    order: 3;
-    margin-left: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    padding: 0 16px;
+    background: var(--white);
+    position: sticky;
+    top: 0;
+    z-index: 1100;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.05);
   }
   .navbar .nav-search {
-    order: 4;
-    position: static;
-    transform: none;
-    width: 100%;
-    max-width: 100%;
-    margin-top: 4px;
+    display: none; /* Hide default search bar on header, optimize search page or flow */
+  }
+  .navbar .nav-location {
+    font-size: 15px;
+    font-weight: 700;
+  }
+  .navbar .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  /* Mobile Custom Swiggy-like Bottom Nav Bar */
+  body {
+    padding-bottom: 72px; /* Avoid overlay blocking content */
+  }
+  
+  .mobile-bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 64px;
+    background: var(--white);
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 1200;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.06);
+  }
+  
+  .mobile-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-decoration: none;
+    gap: 4px;
+    padding: 6px;
+    transition: color 0.2s ease;
+  }
+  .mobile-nav-item.active {
+    color: var(--green-dark);
   }
 }
 
 @media (max-width: 480px) {
-  .navbar .nav-logo span,
-  .navbar .nav-location {
-    font-size: 16px;
+  /* Food / Restaurant card UI polishing */
+  .restaurant-card {
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    background: var(--white);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    margin-bottom: 8px;
   }
-  .navbar .nav-logo img,
-  .navbar .nav-location svg {
-    width: 36px;
-    height: 36px;
+  .restaurant-card-img {
+    height: 180px;
+    width: 100%;
+    object-fit: cover;
+  }
+  .restaurant-card-body {
+    padding: 16px;
+  }
+  .hero {
+    height: 240px;
+  }
+  .hero-overlay h1 {
+    font-size: 22px;
   }
 }
+
 .navbar .nav-user-dropdown {
   position: absolute;
   top: calc(100% + 8px);
