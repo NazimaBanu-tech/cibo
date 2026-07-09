@@ -1,0 +1,21 @@
+{
+  "short_name": "Cibo",
+  "name": "Cibo - Online Food Ordering",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/logo.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#f0ede6",
+  "display": "standalone",
+  "theme_color": "#4a6741",
+  "orientation": "portrait"
+}
