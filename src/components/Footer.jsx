@@ -37,11 +37,16 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <div className="footer-bottom">
-        <span>© 2026 Cibo. All rights reserved.</span>
-        <span>
-          <a href="/admin/login">Admin Panel</a>
-        </span>
+      <div className="footer-bottom" style={{ display: 'flex', flexDirection: 'column', gap: '8px', alignItems: 'center', textAlign: 'center' }}>
+        <div style={{ order: 2 }}>
+          <span>© 2026 Cibo. All rights reserved.</span>
+          <span style={{ marginLeft: '12px' }}>
+            <a href="/admin/login">Admin Panel</a>
+          </span>
+        </div>
+        <div style={{ order: 1, fontSize: '14px', fontWeight: '600', color: 'var(--green-dark)' }}>
+          Made with <span style={{ color: 'var(--green-dark)' }}>❤️</span> by Nazima
+        </div>
       </div>
     </footer>
   );
