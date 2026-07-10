@@ -45,7 +45,7 @@ export default function Footer() {
           </span>
         </div>
         <div style={{ order: 1, fontSize: '14px', fontWeight: '600', color: 'var(--green-dark)' }}>
-          Made with <span style={{ color: 'var(--green-dark)' }}>❤️</span> by Nazima
+          Made with <span style={{ color: 'var(--green-dark)' }}>💚</span> by Nazima
         </div>
       </div>
     </footer>
